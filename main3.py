@@ -55,7 +55,7 @@ while True:
                 # Draw rectangle around the object
                 cvzone.cornerRect(img, (x1, y1, w, h), colorC=color, colorR=color)
                 # Display class name and confidence score
-                
+                cvzone.putTextRect(img, f'{name} {int(conf*100)}%', (max(0, x1), max(35, y1)), scale=2, thickness=2, colorR=color, colorB=color)
 
     # Display the frame
     cv2.imshow("Image", img)
@@ -64,7 +64,8 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
     
-
+    fps = cap.get(cv2.CAP_PROP_FPS)
+    print(fps)
 
 # Release the video capture object
 cap.release()
